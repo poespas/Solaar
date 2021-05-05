@@ -3,6 +3,9 @@ title: Solaar
 layout: default
 ---
 
+> :warning: This fork is a 1:1 copy of the original Solaar, except for the **Logitech B613** all G-keys are logged into `/tmp/logitech.last-gkey` ,
+> to be used/picked up by a program written in a more satisfying programming language
+
 **Solaar** is a Linux manager for many Logitech keyboards, mice, and trackpads
 that connect wirelessly to a USB [Unifying][unifying], Lightspeed, or Nano receiver,
 connect directly via a USB cable, or connect via Bluetooth.
