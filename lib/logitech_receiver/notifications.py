@@ -386,6 +386,22 @@ def _process_feature_notification(device, status, n, feature):
             _log.warn('%s: unknown WHEEL %s', device, n)
 
     _diversion.process_notification(device, status, n, feature)
+    
+    GKeys = {
+        "01000000000000000000000000000000": "G1",
+        "02000000000000000000000000000000": "G2",
+        "04000000000000000000000000000000": "G3",
+        "08000000000000000000000000000000": "G4",
+        "10000000000000000000000000000000": "G5",
+        "20000000000000000000000000000000": "G6",
+    }
+    
+    if device.codename == "G613" and str(feature) == "GKEY":
+        KeyLabel = GKeys.get(_strhex(n.data), None)
+        
+        if KeyLabel is not None:
+            with open('/tmp/logitech.last-gkey', 'w') as f:
+                f.write(KeyLabel)
 
     if _log.isEnabledFor(_DEBUG):
         _log.debug('%s: notification for feature %r, report %s, data %s', device, feature, n.sub_id >> 4, _strhex(n.data))
